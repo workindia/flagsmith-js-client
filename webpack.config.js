@@ -12,6 +12,11 @@ const defaultConfig = {
                 use: {
                     loader: 'babel-loader'
                 }
+            },
+            {
+                type: 'javascript/auto',
+                test: /\.mjs$/,
+                use: []
             }
         ]
     }
