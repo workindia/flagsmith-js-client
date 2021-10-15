@@ -256,12 +256,20 @@ const Flagsmith = class {
                         if (!preventFetch) {
                             this.getFlags(resolve, reject)
                         } else {
+                            if (defaultFlags) {
+                                this.onChange(null, { isFromServer: false });
+                            }
                             resolve();
                         }
                     }
                 });
             } else if (!preventFetch) {
                 this.getFlags(resolve, reject);
+            } else {
+                if (defaultFlags) {
+                    this.onChange(null, { isFromServer: false });
+                }
+                resolve();
             }
         })
         .catch(error => onError(error));

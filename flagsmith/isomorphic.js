@@ -637,15 +637,15 @@
       }
 
       keys() {
-        return L(this, "key");
+        return F(this, "key");
       }
 
       values() {
-        return L(this, "value");
+        return F(this, "value");
       }
 
       [Symbol.iterator]() {
-        return L(this, "key+value");
+        return F(this, "key+value");
       }
 
     }
@@ -697,8 +697,8 @@
     });
     const k = Symbol("internal");
 
-    function L(e, t) {
-      const r = Object.create(F);
+    function F(e, t) {
+      const r = Object.create(L);
       return r[k] = {
         target: e,
         kind: t,
@@ -706,9 +706,9 @@
       }, r;
     }
 
-    const F = Object.setPrototypeOf({
+    const L = Object.setPrototypeOf({
       next() {
-        if (!this || Object.getPrototypeOf(this) !== F) throw new TypeError("Value of `this` is not a HeadersIterator");
+        if (!this || Object.getPrototypeOf(this) !== L) throw new TypeError("Value of `this` is not a HeadersIterator");
         var e = this[k];
         const t = e.target,
               r = e.kind,
@@ -725,7 +725,7 @@
 
     }, Object.getPrototypeOf(Object.getPrototypeOf([][Symbol.iterator]())));
 
-    function B(e) {
+    function C(e) {
       const t = Object.assign({
         __proto__: null
       }, e[x]),
@@ -733,13 +733,13 @@
       return void 0 !== r && (t[r] = t[r][0]), t;
     }
 
-    Object.defineProperty(F, Symbol.toStringTag, {
+    Object.defineProperty(L, Symbol.toStringTag, {
       value: "HeadersIterator",
       writable: !1,
       enumerable: !1,
       configurable: !0
     });
-    const C = Symbol("Response internals"),
+    const B = Symbol("Response internals"),
           z = o.STATUS_CODES;
 
     class $ {
@@ -756,7 +756,7 @@
           t && n.append("Content-Type", t);
         }
 
-        this[C] = {
+        this[B] = {
           url: t.url,
           status: r,
           statusText: t.statusText || z[r],
@@ -766,27 +766,27 @@
       }
 
       get url() {
-        return this[C].url || "";
+        return this[B].url || "";
       }
 
       get status() {
-        return this[C].status;
+        return this[B].status;
       }
 
       get ok() {
-        return this[C].status >= 200 && this[C].status < 300;
+        return this[B].status >= 200 && this[B].status < 300;
       }
 
       get redirected() {
-        return this[C].counter > 0;
+        return this[B].counter > 0;
       }
 
       get statusText() {
-        return this[C].statusText;
+        return this[B].statusText;
       }
 
       get headers() {
-        return this[C].headers;
+        return this[B].headers;
       }
 
       clone() {
@@ -952,7 +952,7 @@
           let i = e.agent;
           return "function" == typeof i && (i = i(t)), r.has("Connection") || i || r.set("Connection", "close"), Object.assign({}, t, {
             method: e.method,
-            headers: B(r),
+            headers: C(r),
             agent: i
           });
         }(u),
@@ -1128,15 +1128,15 @@
           A,
           I,
           k = Array.prototype,
-          L = Function.prototype,
-          F = Object.prototype,
-          B = w["__core-js_shared__"],
-          C = L.toString,
-          z = F.hasOwnProperty,
-          $ = (x = /[^.]+$/.exec(B && B.keys && B.keys.IE_PROTO || "")) ? "Symbol(src)_1." + x : "",
-          R = F.toString,
-          N = C.call(Object),
-          U = RegExp("^" + C.call(z).replace(/[\\^$.*+?()[\]{}|]/g, "\\$&").replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, "$1.*?") + "$"),
+          F = Function.prototype,
+          L = Object.prototype,
+          C = w["__core-js_shared__"],
+          B = F.toString,
+          z = L.hasOwnProperty,
+          $ = (x = /[^.]+$/.exec(C && C.keys && C.keys.IE_PROTO || "")) ? "Symbol(src)_1." + x : "",
+          R = L.toString,
+          N = B.call(Object),
+          U = RegExp("^" + B.call(z).replace(/[\\^$.*+?()[\]{}|]/g, "\\$&").replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, "$1.*?") + "$"),
           D = j ? w.Buffer : void 0,
           q = w.Symbol,
           J = w.Uint8Array,
@@ -1145,7 +1145,7 @@
         return A(I(e));
       }),
           G = Object.create,
-          V = F.propertyIsEnumerable,
+          V = L.propertyIsEnumerable,
           K = k.splice,
           Z = q ? q.toStringTag : void 0,
           Y = function () {
@@ -1164,7 +1164,7 @@
         function e() {}
 
         return function (t) {
-          if (!Fe(t)) return {};
+          if (!Le(t)) return {};
           if (G) return G(t);
           e.prototype = t;
           var r = new e();
@@ -1211,7 +1211,7 @@
         var r = xe(e),
             n = !r && Pe(e),
             o = !r && !n && Ie(e),
-            i = !r && !n && !o && Ce(e),
+            i = !r && !n && !o && Be(e),
             a = r || n || o || i,
             s = a ? function (e, t) {
           for (var r = -1, n = Array(e); ++r < e;) n[r] = t(r);
@@ -1353,16 +1353,16 @@
       }
 
       function ye(e) {
-        return Be(e) && de(e) == s;
+        return Ce(e) && de(e) == s;
       }
 
       function ge(e) {
-        return !(!Fe(e) || function (e) {
+        return !(!Le(e) || function (e) {
           return !!$ && $ in e;
         }(e)) && (ke(e) ? U : y).test(function (e) {
           if (null != e) {
             try {
-              return C.call(e);
+              return B.call(e);
             } catch (e) {}
 
             try {
@@ -1375,7 +1375,7 @@
       }
 
       function be(e) {
-        if (!Fe(e)) return function (e) {
+        if (!Le(e)) return function (e) {
           var t = [];
           if (null != e) for (var r in Object(e)) t.push(r);
           return t;
@@ -1390,7 +1390,7 @@
 
       function ve(e, t, r, n, o) {
         e !== t && pe(t, function (i, a) {
-          if (o || (o = new ae()), Fe(i)) !function (e, t, r, n, o, i, a) {
+          if (o || (o = new ae()), Le(i)) !function (e, t, r, n, o, i, a) {
             var s = Oe(e, r),
                 u = Oe(t, r),
                 c = a.get(u);
@@ -1401,8 +1401,8 @@
             if (f) {
               var p = xe(u),
                   d = !p && Ie(u),
-                  y = !p && !d && Ce(u);
-              l = u, p || d || y ? xe(s) ? l = s : Be(w = s) && Ae(w) ? l = function (e, t) {
+                  y = !p && !d && Be(u);
+              l = u, p || d || y ? xe(s) ? l = s : Ce(w = s) && Ae(w) ? l = function (e, t) {
                 var r = -1,
                     n = e.length;
                 t || (t = Array(n));
@@ -1416,11 +1416,11 @@
                     n = M ? M(r) : new e.constructor(r);
                 return e.copy(n), n;
               }(u, !0)) : y ? (f = !1, g = u, b = !0 ? (v = g.buffer, m = new v.constructor(v.byteLength), new J(m).set(new J(v)), m) : g.buffer, l = new g.constructor(b, g.byteOffset, g.length)) : l = [] : function (e) {
-                if (!Be(e) || de(e) != h) return !1;
+                if (!Ce(e) || de(e) != h) return !1;
                 var t = H(e);
                 if (null === t) return !0;
                 var r = z.call(t, "constructor") && t.constructor;
-                return "function" == typeof r && r instanceof r && C.call(r) == N;
+                return "function" == typeof r && r instanceof r && B.call(r) == N;
               }(u) || Pe(u) ? (l = s, Pe(s) ? l = function (e) {
                 return function (e, t, r, n) {
                   var o = !r;
@@ -1436,7 +1436,7 @@
 
                   return r;
                 }(e, ze(e));
-              }(s) : Fe(s) && !ke(s) || (l = function (e) {
+              }(s) : Le(s) && !ke(s) || (l = function (e) {
                 return "function" != typeof e.constructor || je(e) ? {} : re(H(e));
               }(u))) : f = !1;
             }
@@ -1488,7 +1488,7 @@
 
       function je(e) {
         var t = e && e.constructor;
-        return e === ("function" == typeof t && t.prototype || F);
+        return e === ("function" == typeof t && t.prototype || L);
       }
 
       function Oe(e, t) {
@@ -1527,12 +1527,12 @@
       var Pe = ye(function () {
         return arguments;
       }()) ? ye : function (e) {
-        return Be(e) && z.call(e, "callee") && !V.call(e, "callee");
+        return Ce(e) && z.call(e, "callee") && !V.call(e, "callee");
       },
           xe = Array.isArray;
 
       function Ae(e) {
-        return null != e && Le(e.length) && !ke(e);
+        return null != e && Fe(e.length) && !ke(e);
       }
 
       var Ie = W || function () {
@@ -1540,30 +1540,30 @@
       };
 
       function ke(e) {
-        if (!Fe(e)) return !1;
+        if (!Le(e)) return !1;
         var t = de(e);
         return t == c || t == l || t == u || t == p;
       }
 
-      function Le(e) {
+      function Fe(e) {
         return "number" == typeof e && e > -1 && e % 1 == 0 && e <= a;
       }
 
-      function Fe(e) {
+      function Le(e) {
         var t = typeof e;
         return null != e && ("object" == t || "function" == t);
       }
 
-      function Be(e) {
+      function Ce(e) {
         return null != e && "object" == typeof e;
       }
 
-      var Ce = E ? function (e) {
+      var Be = E ? function (e) {
         return function (t) {
           return e(t);
         };
       }(E) : function (e) {
-        return Be(e) && Le(e.length) && !!b[de(e)];
+        return Ce(e) && Fe(e.length) && !!b[de(e)];
       };
 
       function ze(e) {
@@ -1580,7 +1580,7 @@
             i = n > 2 ? t[2] : void 0;
 
         for (o = $e.length > 3 && "function" == typeof o ? (n--, o) : void 0, i && function (e, t, r) {
-          if (!Fe(r)) return !1;
+          if (!Le(r)) return !1;
           var n = typeof t;
           return !!("number" == n ? Ae(r) && Se(t, r.length) : "string" == n && (t in r)) && Ee(r[t], e);
         }(t[0], t[1], i) && (o = n < 3 ? void 0 : o, n = 1), e = Object(e); ++r < n;) {
@@ -1669,14 +1669,16 @@
         (function (e, t) {
           if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
         })(this, e), s(this, "getJSON", function (e, t, n) {
-          var o = {
+          var o = r.environmentID,
+              i = r.headers,
+              a = {
             method: t || "GET",
             body: n,
             headers: {
-              "x-environment-key": r.environmentID
+              "x-environment-key": o
             }
           };
-          return t && "GET" !== t && (o.headers["Content-Type"] = "application/json; charset=utf-8"), u(e, o).then(function (e) {
+          return t && "GET" !== t && (a.headers["Content-Type"] = "application/json; charset=utf-8"), i && Object.assign(a.headers, i), u(e, a).then(function (e) {
             return e.text().then(function (t) {
               var r = t;
 
@@ -1829,17 +1831,18 @@
               r = e.environmentID,
               n = e.api,
               o = void 0 === n ? l : n,
-              a = e.onChange,
-              s = e.cacheFlags,
-              u = e.onError,
-              f = e.defaultFlags,
-              h = e.preventFetch,
-              p = e.enableLogs,
-              d = e.enableAnalytics,
-              y = e.AsyncStorage,
-              g = e.state;
+              a = e.headers,
+              s = e.onChange,
+              u = e.cacheFlags,
+              f = e.onError,
+              h = e.defaultFlags,
+              p = e.preventFetch,
+              d = e.enableLogs,
+              y = e.enableAnalytics,
+              g = e.AsyncStorage,
+              b = e.state;
           return new Promise(function (e, n) {
-            if (t.environmentID = r, t.api = o, t.getFlagInterval = null, t.analyticsInterval = null, t.onChange = a, t.onError = u, t.enableLogs = p, t.enableAnalytics = !!d && d, t.flags = Object.assign({}, f) || {}, t.initialised = !0, t.ticks = 1e4, t.timer = t.enableLogs ? new Date().valueOf() : null, y && (c = y), t.cacheFlags = void 0 !== c && s, t.setState(g), !r) throw n("Please specify a environment id"), "Please specify a environment id";
+            if (t.environmentID = r, t.api = o, t.headers = a, t.getFlagInterval = null, t.analyticsInterval = null, t.onChange = s, t.onError = f, t.enableLogs = d, t.enableAnalytics = !!y && y, t.flags = Object.assign({}, h) || {}, t.initialised = !0, t.ticks = 1e4, t.timer = t.enableLogs ? new Date().valueOf() : null, g && (c = g), t.cacheFlags = void 0 !== c && u, t.setState(b), !r) throw n("Please specify a environment id"), "Please specify a environment id";
             c.getItem("BULLET_TRAIN_EVENT").then(function (e) {
               if (e) try {
                 t.evaluationEvent = JSON.parse(e);
@@ -1850,22 +1853,26 @@
             }), t.enableAnalytics && (t.analyticsInterval && clearInterval(t.analyticsInterval), c.getItem("BULLET_TRAIN_EVENT", function (e, r) {
               if (r) {
                 var n = JSON.parse(r);
-                n && (g = t.getState(), t.log("Retrieved events from cache", r), t.setState(i({}, g, {
+                n && (b = t.getState(), t.log("Retrieved events from cache", r), t.setState(i({}, b, {
                   evaluationEvent: n
                 })));
               }
-            })), s ? c.getItem("BULLET_TRAIN_DB", function (r, o) {
+            })), u ? c.getItem("BULLET_TRAIN_DB", function (r, o) {
               if (o) try {
                 var i = JSON.parse(o);
                 i && i.api === t.api && i.environmentID === t.environmentID && (t.setState(i), t.log("Retrieved flags from cache", i)), t.flags ? (t.onChange && t.onChange(null, {
                   isFromServer: !1
-                }), t.oldFlags = t.flags, e(), !h && t.getFlags(Promise.resolve, Promise.reject)) : h ? e() : t.getFlags(e, n);
+                }), t.oldFlags = t.flags, e(), !p && t.getFlags(Promise.resolve, Promise.reject)) : p ? e() : t.getFlags(e, n);
               } catch (e) {
                 t.log("Exception fetching cached logs", e);
-              } else h ? e() : t.getFlags(e, n);
-            }) : !h && t.getFlags(e, n);
+              } else p ? (h && t.onChange(null, {
+                isFromServer: !1
+              }), e()) : t.getFlags(e, n);
+            }) : p ? (h && t.onChange(null, {
+              isFromServer: !1
+            }), e()) : t.getFlags(e, n);
           }).catch(function (e) {
-            return u(e);
+            return f(e);
           });
         }
       }, {
